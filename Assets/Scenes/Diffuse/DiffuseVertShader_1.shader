@@ -36,12 +36,13 @@ Shader "Custom/DiffuseVertShader_1"
             v2f vert(a2v v){
                 v2f o;
 
+                //顶点位置从模型空间转换到裁剪空间
                 o.pos = UnityObjectToClipPos(v.vertex);
-
+                //获取环境光
                 fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
-
+                //计算漫反射需要4个参数：材质的漫反射颜色、顶点法线、光源的颜色和强度、光源方向
                 fixed3 worldNormal = normalize(mul(v.normal,(float3x3)unity_WorldToObject));
-
+                //仅适用于场景中只有一个平行光
                 fixed3 worldLight = normalize(_WorldSpaceLightPos0.xyz);
 
                 fixed3 diffuse = _LightColor0.rgb * _Diffuse.rgb * saturate(dot(worldNormal,worldLight));
