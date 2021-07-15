@@ -36,20 +36,23 @@ public class CameraControler : MonoBehaviour
     void Update()
     {
 		//空格键抬升高度
-		if (Input.GetKey(KeyCode.Space))
-		{
-			transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-		}
+		//if (Input.GetKey(KeyCode.Space))
+		//{
+		//}
 
 		//w键前进
 		if (Input.GetKey(KeyCode.W))
 		{
-			this.gameCameraObject.transform.Translate(new Vector3(0, 0, 5 * Time.deltaTime));
+			this.gameCameraObject.transform.position = new Vector3(this.gameCameraObject.transform.position.x, this.gameCameraObject.transform.position.y + 0.1f, this.gameCameraObject.transform.position.z);
+
+			//this.gameCameraObject.transform.Translate(new Vector3(0, 0, 5 * Time.deltaTime));
 		}
 		//s键后退
 		if (Input.GetKey(KeyCode.S))
 		{
-			this.gameCameraObject.transform.Translate(new Vector3(0, 0, -5 * Time.deltaTime));
+			this.gameCameraObject.transform.position = new Vector3(this.gameCameraObject.transform.position.x, this.gameCameraObject.transform.position.y - 0.1f, this.gameCameraObject.transform.position.z);
+
+			//this.gameCameraObject.transform.Translate(new Vector3(0, 0, -5 * Time.deltaTime));
 		}
 		//a键后退
 		if (Input.GetKey(KeyCode.A))
